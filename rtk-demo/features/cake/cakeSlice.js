@@ -1,0 +1,22 @@
+const createSlice = require("@reduxjs/toolkit").createSlice;
+
+const initialState = {
+  numOfCakes: 10,
+};
+
+const cakeSlice = createSlice({
+  name: "cake",
+  initialState,
+  // ይሄ `combineReducers` የሚለውን የredux ፈንክሽን ይተካል
+  reducers: {
+    ordered: (state) => {
+      state.numOfCakes--;
+    },
+    restoked: (state, action) => {
+      state.numOfCakes += action.payload;
+    },
+  },
+});
+
+module.exports = cakeSlice.reducer;
+module.exports.cakeActions = cakeSlice.actions;
